@@ -17,10 +17,9 @@ public class BinaryTreeMaxPathSum {
 		if (root == null) return 0;
 		int l = dfs(root.left);
 		int r = dfs(root.right);
-		int sum = root.val;
-		if (l > 0) sum += l;
-		if (r > 0) sum += r;
-		maxSum = Math.max(maxSum, sum);
-		return Math.max(l, r) > 0 ? Math.max(l, r) + root.val : root.val;
+		if (l < 0) l = 0;
+		if (r < 0) r = 0;
+		maxSum = Math.max(maxSum, root.val + l + r);
+		return root.val + Math.max(l, r);
 	}
 }
