@@ -9,7 +9,25 @@ import dataStructure.TreeNode;
 
 public class BinaryTreeLevelOrderTraversal {
 
-	public List<List<Integer>> levelOrder(TreeNode root){
+	// method 1: recursive, O(n) time, O(n) space
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        levelOrderRec(result, root, 0);
+        return result;
+    }
+    
+    private void levelOrderRec(List<List<Integer>> result, TreeNode root, int level){
+        if (root == null) return;
+        if (level == result.size()){
+            result.add(new ArrayList<Integer>());
+        }
+        result.get(level).add(root.val);
+        levelOrderRec(result, root.left, level + 1);
+        levelOrderRec(result, root.right, level + 1);
+    }
+	
+	// method 2: iterative, O(n) time, O(n) space
+	public List<List<Integer>> levelOrder2(TreeNode root){
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (root == null) return result;
 		
