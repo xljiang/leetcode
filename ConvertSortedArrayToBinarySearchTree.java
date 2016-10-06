@@ -4,6 +4,7 @@ import dataStructure.TreeNode;
 
 public class ConvertSortedArrayToBinarySearchTree {
 
+	// time O(n), space O(logN)
 	// divide and conquer
     public TreeNode sortedArrayToBST(int[] nums) {
         if (nums == null) return null;
@@ -14,12 +15,11 @@ public class ConvertSortedArrayToBinarySearchTree {
         if (start > end) {
             return null;
         }
-        else {
-            int mid = (start + end) /2;
-            TreeNode root = new TreeNode(nums[mid]);
-            root.left = sortedArrayToBST(nums, start, mid - 1);
-            root.right = sortedArrayToBST(nums, mid + 1, end);
-            return root;
-        }
+        
+        int mid = (start + end) /2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = sortedArrayToBST(nums, start, mid - 1);
+        root.right = sortedArrayToBST(nums, mid + 1, end);
+        return root;
     }
 }
