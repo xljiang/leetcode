@@ -4,7 +4,7 @@ import dataStructure.TreeNode;
 
 public class BalancedBinaryTree {
 	
-	// method 1, top-down, O(n^2)
+	// method 1, top-down, O(nlogn) time
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;
         int heightDiff = Math.abs(maxDepth(root.left) - maxDepth(root.right));
@@ -21,7 +21,7 @@ public class BalancedBinaryTree {
     }
     
     
-    // method 2, bottom-up, O(n)
+    // method 2, bottom-up, O(n) time, O(logn) space
     public boolean isBalanced2(TreeNode root) {
         if (root == null) return true;
         return getHeight(root) != -1;
