@@ -75,7 +75,7 @@ public class PathSumIII {
 		}
 	}
 	
-	// a simplifyer version of method 2
+	// a simplified version of method 2
 	public int pathSum3(TreeNode root, int sum){
 		HashMap<Integer, Integer> preSum = new HashMap<>();
 		preSum.put(0, 1); // why??? default sum = 0 has one count
