@@ -26,25 +26,26 @@ public class SortColors {
     // method 2: one-pass algorithm
     // use two pointer zero and two, and an iterator i; sweep all 0s to the left and all 2s to the right,
     // then all 1s are left in the middle
-    public void sortColors2(int[] nums){
-    	int zero = 0, two = nums.length - 1;
-    	for (int i = 0; i <= two;){
-    		if (nums[i] == 0){
-    			// swap nums[i] and nums[zero]
-    			int tmp = nums[i];
-    			nums[i] = nums[zero];
-    			nums[zero] = tmp;
-    			i++;
-    			zero++;
-    		} else if (nums[i] == 2){
-    			// swap nums[i] and nums[two]
-    			int tmp = nums[i];
-    			nums[i] = nums[two];
-    			nums[two] = tmp;
-    			two--;
-    		} else {
-    			i++;
-    		}
-    	}
+    public void sortColors2(int[] nums) {
+        int zero = 0, two = nums.length - 1;
+        for (int i = 0; i <= two;) {
+            if (nums[i] == 0) {
+                swap(nums, i, zero);
+                zero++;
+                i++;
+            } else if (nums[i] == 2) {
+                swap(nums, i, two);
+                two--;
+            } else {
+                i++;
+            }
+        }
     }
+    
+    private void swap(int[] nums, int i, int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+    
 }
