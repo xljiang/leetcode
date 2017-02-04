@@ -30,6 +30,20 @@ public class UniquePaths {
 		}
 	}
 	
+	// another memoization, cache as a help function's parameter
+    public int uniquePathsMemo2(int m, int n) {
+        int[][] memo = new int[m+1][n+1];
+        return uniquePaths(m, n, memo);
+    }
+    
+    private int uniquePaths(int m, int n, int[][] memo) {
+        if (m == 1 || n == 1) return 1;
+        if (memo[m][n] == 0) {
+            memo[m][n] = uniquePaths(m-1, n, memo) + uniquePaths(m, n-1, memo);
+        }
+        return memo[m][n];
+    }
+	
 	
 	// iterative bottom-up DP: time O(nm), space O(nm)
 	public int uniquePathsDP(int m, int n){
