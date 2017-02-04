@@ -13,27 +13,28 @@ public class LongestPalindromicSubstring {
         }
         
         for (int i = 0; i < s.length() - 1; i++){
-            checkPanlindrome(s, i, i);
-            checkPanlindrome(s, i, i+1);
+            checkPanlindrome(s, i, i);// assume odd length, try to extend Palindrome as possible
+            checkPanlindrome(s, i, i+1);// assume even length
         }    
         
         return s.substring(start, start + maxLength);
     }
     
-    private void checkPanlindrome(String s, int j, int k){
-        while ((j >= 0) && (k < s.length()) && (s.charAt(j) == s.charAt(k))){
-            j--;
-            k++;
+    // search from middle to left and right
+    private void checkPanlindrome(String s, int left, int right){
+        while ((left >= 0) && (right < s.length()) && (s.charAt(left) == s.charAt(right))){
+            left--;
+            right++;
         }
         
         // change index to real index in the string
-        j++;
-        k--;
+        left++;
+        right--;
         
         // update maxLength and start index
-        if (maxLength < k - j + 1){ 
-            start = j;
-            maxLength = k - j + 1;
+        if (maxLength < right - left + 1){ 
+            start = left;
+            maxLength = right - left + 1;
         }
     }
 }
