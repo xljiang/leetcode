@@ -19,4 +19,25 @@ public class HouseRobberII {
         }
         return money[n];
     }
+    
+    // space optimization
+    public int rob2(int[] nums) {
+        int n = nums.length;
+        if (n == 0) return 0;
+        if (n == 1) return nums[0];
+        return Math.max(robHelper2(nums, 0, n-2), robHelper2(nums, 1, n-1));
+    }
+    
+    private int robHelper2(int[] nums, int start, int end) {
+        int len = end - start + 1;
+        int lastLast = 0;
+        int last = nums[start];
+        int curr = last;
+        for (int i = 2; i <= len; i++) {
+            curr = Math.max(last, lastLast + nums[start+i-1]);
+            lastLast = last;
+            last = curr;
+        }
+        return curr;
+    }
 }
