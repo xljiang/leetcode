@@ -31,6 +31,41 @@ public class GenerateParentheses {
         return result;
     }
     
+    // same as method 1, different implementation
+    public List<String> generateParenthesisItr(int n) {
+        if (n == 0) return null;
+        List<String> result = new ArrayList<>();
+        result.add("()"); // n = 1
+        
+        int i = 2;
+        while (i <= n) {
+            List<String> curr = new ArrayList<>();
+            for (String str : result) {
+                addParen(str, curr);
+            }
+            result = curr;
+            i++;
+        }
+        return result;
+    }
+    
+    private void addParen(String str, List<String> curr) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') {
+                StringBuilder sb = new StringBuilder(str);
+                sb.insert(i+1, "()");
+                String newStr = sb.toString();
+                if (!curr.contains(newStr)) {
+                    curr.add(sb.toString());
+                }
+            }
+        }
+        String newStr = str + "()";
+        if (!curr.contains(newStr)) {
+            curr.add(newStr);    
+        }
+    }
+    
     // method 2: use template
     public List<String> generateParenthesis2(int n){
     	ArrayList <String> result = new ArrayList<String>();
