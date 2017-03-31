@@ -16,11 +16,11 @@ public class SubsetsII {
 		return result;
 	}
 	
-	private void recHelper(List<List<Integer>> result, List<Integer> path, int[] nums, int start){
+	private void recHelper(List<List<Integer>> result, List<Integer> path, int[] nums, int pos){
 		result.add(new ArrayList<Integer>(path));
 		
-		for (int i = start; i < nums.length; i++){
-			if ( i > start && nums[i] == nums[i-1]){ // skip duplicates
+		for (int i = pos; i < nums.length; i++){
+			if ( i > pos && nums[i] == nums[i-1]){ // skip duplicates
 				continue;
 			}
 			path.add(nums[i]);
