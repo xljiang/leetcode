@@ -25,4 +25,20 @@ public class Subsets {
 			path.remove(path.size() - 1);
 		}
 	}
+	
+	// soulmachine solution
+	private void recHelper2(List<List<Integer>> result, List<Integer> path, int[] nums, int pos){
+		if (pos == nums.length) {
+			result.add(new ArrayList<Integer>(path));
+			return;
+		}
+		
+		// don't choose nums[pos]
+		recHelper2(result, path, nums, pos + 1);
+		// choose nums[pos]
+		path.add(nums[pos]);
+		recHelper2(result, path, nums, pos + 1);
+		path.remove(path.size() - 1);
+
+	}
 }
