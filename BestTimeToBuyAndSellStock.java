@@ -28,5 +28,20 @@ public class BestTimeToBuyAndSellStock {
         }
         return maxProfit;
 	}
+    
+    // method 3: greedy
+    public int maxProfit3(int[] prices) {
+        int max = 0;
+        int profit = 0;
+        for (int i = 1; i < prices.length; i++) {
+        	profit += prices[i] - prices[i-1];
+            if (profit < 0) {
+            	profit = 0;
+            }
+            max = Math.max(max, profit);
+        }        
+        return max;
+    }
+    
 
 }
