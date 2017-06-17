@@ -1,33 +1,26 @@
 package leetcode;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlusOne {
 
-	// My first solution use Stack
+	// Use extra space
     public int[] plusOne(int[] digits) {
-        Stack<Integer> result = new Stack<Integer>();
-        int carry = 0;
-        int curr;
-        for (int i = digits.length - 1; i >= 0; i--){
-            curr = digits[i];
-            int sum;
-            if (i == digits.length - 1){
-                sum = curr + 1 + carry;
-            } else {
-                sum = curr + carry;
-            }
+        List<Integer> arr = new ArrayList<>();
+        int carry = 1; // initialize carry = 1
+        for (int i = digits.length - 1; i >= 0; i--) {
+            int sum = digits[i] + carry;
+            arr.add(sum % 10);
             carry = sum / 10;
-            int number = sum % 10;
-            result.push(number);
         }
-        if (carry != 0){
-            result.push(1);
+        if (carry != 0) {
+            arr.add(carry);
         }
-        int[] res = new int[result.size()];
-        for (int i = 0; i < res.length; i++){
-            res[i] = result.pop();
-        }
+        int[] res = new int[arr.size()];
+        for (int i = arr.size() - 1, j = 0; i >= 0; i--, j++) {
+            res[i] = arr.get(j);
+        } 
         return res;
     }
 	
