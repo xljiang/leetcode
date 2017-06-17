@@ -43,6 +43,7 @@ public class IntersectionOfTwoLinkedLists {
     // cleaner code, same thought
     public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
     	int lenA = getLength(headA), lenB = getLength(headB);
+    	// move headA and headB to the same start point
     	while (lenA > lenB){
     		headA = headA.next;
     		lenA--;
