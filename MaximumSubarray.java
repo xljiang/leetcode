@@ -1,7 +1,7 @@
 package leetcode;
 
 public class MaximumSubarray {
-
+	// dp
     public int maxSubArray(int[] nums) {
         int n = nums.length;
         int[] f = new int[n+1]; // f[i] is the max sum of subarray ending with i
@@ -17,7 +17,7 @@ public class MaximumSubarray {
         return sum;
     }
     
-    // more concise version, O(1) space
+    // dp, more concise version, O(1) space
     public int maxSubArray2(int[] nums){
     	int n = nums.length;
     	int f = 0;
@@ -40,7 +40,7 @@ public class MaximumSubarray {
     	return res;
     }
     
-    // a simple solution
+    // a simple solution (actually same as dp above)
     public int maxSubArray4(int[] nums) {
         int max = Integer.MIN_VALUE;
         int sum = Integer.MIN_VALUE;
